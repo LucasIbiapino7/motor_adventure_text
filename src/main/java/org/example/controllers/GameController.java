@@ -8,7 +8,7 @@ import java.util.Objects;
 
 public class GameController {
     private final Game game;
-    private Integer round;
+    private Integer turn = 0;
     private boolean limitItems;
     private Location currentLocation;
     private final List<Item> inventario = new ArrayList<>();
@@ -24,13 +24,13 @@ public class GameController {
     public String command(String command) {
         String[] split = command.split(" ");
         if (commands.contains(split[0])){
+            updateTurn(split[0]);
             if (split[0].equalsIgnoreCase("ir")){
                 return commandIr(split[1]);
             } else if (split[0].equalsIgnoreCase("pegar")) {
                 return commandPegar(split[1]);
             } else if (split[0].equalsIgnoreCase("inventario")) {
-                System.out.println(inventario);
-                return "";
+                return commandInventario();
             } else if (split[0].equalsIgnoreCase("ajuda") || split[0].equalsIgnoreCase("help")) {
                 return commandAjuda();
             } else if (split[0].equalsIgnoreCase("falar")) {
@@ -40,6 +40,22 @@ public class GameController {
             }
         }
         return "comando inválido!";
+    }
+
+    private String commandInventario() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("turno: ").append(turn).append("\n");
+        for (Item item : inventario) {
+            sb.append(item.getName()).append(" - ").append(item.getDescription()).append("\n");
+        }
+        return sb.toString();
+    }
+
+    private void updateTurn(String command) {
+        if (command.equalsIgnoreCase("help") || command.equalsIgnoreCase("ajuda") || command.equalsIgnoreCase("inventario")){
+            return;
+        }
+        turn++;
     }
 
     private String commandFalar(String npcName) {
@@ -66,7 +82,7 @@ public class GameController {
                 "ir <direção>\n" +
                 "pegar <item>\n" +
                 "usar <item>\n" +
-                "falar <npc>" +
+                "falar <npc>\n" +
                 "inventario - para ver seus itens";
     }
 

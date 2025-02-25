@@ -20,8 +20,6 @@ public class Main {
 
         System.out.println(gameController.startLocation());
 
-        System.out.println(game);
-
         while (true){
             String command = scanner.nextLine();
 
