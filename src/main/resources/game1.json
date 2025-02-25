@@ -1,0 +1,173 @@
+{
+  "title": "The Forgotten Castle",
+  "description": "Um antigo castelo abandonado repleto de segredos e perigos em cada sombra.",
+  "author": "Adventure Dev",
+  "startLocationId": 101,
+  "max_itens": 5,
+  "max_turns_easy": 30,
+  "max_turns_normal": 20,
+  "max_turns_hard": 15,
+  "attack": 10,
+  "defense": 8,
+  "life": 22,
+  "locations": [
+    {
+      "id": 101,
+      "name": "Pátio do Castelo",
+      "description": "Um amplo pátio coberto de musgo, com estátuas desgastadas e uma névoa densa que esconde segredos.",
+      "exits": [
+        {
+          "direction": "norte",
+          "targetLocationId": 102,
+          "description": "Um arco imponente conduz ao Salão Principal.",
+          "inactive": false
+        },
+        {
+          "direction": "leste",
+          "targetLocationId": 103,
+          "description": "Um corredor estreito leva à Masmorra úmida.",
+          "inactive": true
+        }
+      ],
+      "items": [
+        {
+          "id": 201,
+          "name": "Chave",
+          "description": "Uma chave antiga que parece abrir alguma porta secreta.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [
+        {
+          "id": 301,
+          "name": "Guarda",
+          "description": "Um guarda silencioso que observa os visitantes com olhar atento.",
+          "inactive": false,
+          "dialogues": [
+            {
+              "text": "Cuidado, viajante. Este castelo guarda segredos que podem mudar seu destino.",
+              "responses": [
+                {
+                  "result": {
+                    "active": [102, 103],
+                    "lose_item": [201]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "puzzles": [
+        {
+          "id": 401,
+          "description": "Um enigma para destrancar um portão trancado. Talvez a chave certa resolva o mistério.",
+          "solution": {
+            "requiredItems": [201],
+            "actions": "usar chave"
+          },
+          "result": {
+            "active": [104],
+            "lose_item": [201],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "attack": 12,
+          "defense": 7,
+          "result": {
+            "active": [101],
+            "lose_item": [201],
+            "lose_life": 12
+          }
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Salão Principal",
+      "description": "Um vasto salão outrora palco de grandes festas, agora silencioso e decadente.",
+      "exits": [
+        {
+          "direction": "sul",
+          "targetLocationId": 101,
+          "description": "Retorna ao Pátio do Castelo.",
+          "inactive": false
+        },
+        {
+          "direction": "cima",
+          "targetLocationId": 104,
+          "description": "Uma escada em espiral leva à Torre.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 202,
+          "name": "Pergaminho",
+          "description": "Um pergaminho com inscrições enigmáticas sobre a história do castelo.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": []
+    },
+    {
+      "id": 103,
+      "name": "Masmorra",
+      "description": "Um ambiente sombrio e úmido onde ecos de gritos e correntes se misturam ao silêncio.",
+      "exits": [
+        {
+          "direction": "oeste",
+          "targetLocationId": 101,
+          "description": "Volta para o Pátio do Castelo.",
+          "inactive": false
+        }
+      ],
+      "items": [],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "attack": 15,
+          "defense": 5,
+          "result": {
+            "active": [],
+            "lose_item": [202],
+            "lose_life": 8
+          }
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "name": "Torre",
+      "description": "Uma torre que se eleva sobre o castelo, oferecendo uma vista panorâmica, mas que também esconde perigos em sua escalada sinuosa.",
+      "exits": [
+        {
+          "direction": "baixo",
+          "targetLocationId": 102,
+          "description": "Descendo de volta ao Salão Principal.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 203,
+          "name": "Adaga",
+          "description": "Uma adaga reluzente, ideal para momentos críticos.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": []
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "title": "title",
+  "description": "description",
+  "author": "author",
+  "startLocationId": 1,
+  "max_itens": 10,
+  "max_turns_easy": 50,
+  "max_turns_normal": 45,
+  "max_turns_hard": 40,
+  "attack": 10,
+  "defense": 8,
+  "life": 22,
+  "locations": [
+    {
+      "id": 1,
+      "name": "name",
+      "description": "description",
+      "exits": [
+        {
+          "direction": "direction",
+          "targetLocationId": 3,
+          "description": "description",
+          "inactive": true
+        }
+      ],
+      "items": [
+        {
+          "id": 1,
+          "name": "name_items",
+          "description": "description",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [
+        {
+          "id": 1,
+          "name": "name",
+          "description": "description",
+          "inactive": false,
+          "dialogues": [
+            {
+              "text": "text",
+              "responses": [
+                {
+                  "result": {
+                    "active": [1, 3],
+                    "lose_item": [1, 4]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "puzzles": [
+        {
+          "id": 2,
+          "description": "description",
+          "solution": {
+            "requiredItems": [1, 4],
+            "actions": "actions"
+          },
+          "result": {
+            "active": [1],
+            "lose_item": [1],
+            "lose_life": 12
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "attack": 12,
+          "defense": 7,
+          "result": {
+            "active": [1],
+            "lose_item": [2],
+            "lose_life": 12
+          }
+        }
+      ]
+    }
+  ]
+
+}

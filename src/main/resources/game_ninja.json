@@ -1,0 +1,445 @@
+{
+  "title": "A Jornada do Ninja",
+  "description": "Embarque em uma aventura épica no mundo dos ninjas, onde você deve encontrar o pergaminho secreto, derrotar Orochimaru e impedir que a Vila da Folha seja destruída.",
+  "author": "Lucas e Steven",
+  "startLocationId": 100,
+  "max_itens": 1,
+  "max_turns_easy": null,
+  "max_turns_normal": null,
+  "max_turns_hard": null,
+  "attack": 12,
+  "defense": 10,
+  "life": 30,
+  "locations": [
+    {
+      "id": 100,
+      "name": "Vila da Folha",
+      "description": "A vila onde você cresceu e aprendeu as artes ninjas. É um lugar movimentado, mas há rumores de ataques iminentes.",
+      "exits": [
+        {
+          "direction": "norte",
+          "targetLocationId": 101,
+          "description": "Uma trilha que leva à Floresta Proibida.",
+          "inactive": false
+        },
+        {
+          "direction": "leste",
+          "targetLocationId": 103,
+          "description": "Um caminho que leva ao Dojo de Treinamento.",
+          "inactive": false
+        },
+        {
+          "direction": "oeste",
+          "targetLocationId": 106,
+          "description": "Uma ponte que leva ao Rio das Sombras.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 200,
+          "name": "Kunai",
+          "description": "Uma faca ninja afiada, útil para combate e outras tarefas.",
+          "can_take": true,
+          "inactive": false
+        },
+        {
+          "id": 201,
+          "name": "Mapa",
+          "description": "Um mapa que mostra a localização da Caverna Secreta, do Templo das Sombras e do esconderijo de Orochimaru.",
+          "can_take": true,
+          "inactive": true
+        }
+      ],
+      "npcs": [
+        {
+          "id": 300,
+          "name": "Sensei",
+          "description": "Seu antigo mestre, sábio e experiente.",
+          "inactive": false,
+          "dialogues": [
+            {
+              "text": "Olá, jovem ninja. Você está pronto para sua missão? Lembre-se de coletar o mapa e treinar no dojo antes de partir. Há rumores de que Orochimaru está planejando algo.",
+              "responses": [
+                {
+                  "result": {
+                    "active": [201],
+                    "lose_item": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "puzzles": [],
+      "enemies": []
+    },
+    {
+      "id": 101,
+      "name": "Floresta Proibida",
+      "description": "Uma floresta densa e perigosa, cheia de armadilhas e inimigos. Há sinais de presença de ninjas renegados.",
+      "exits": [
+        {
+          "direction": "sul",
+          "targetLocationId": 100,
+          "description": "Volta para a Vila da Folha.",
+          "inactive": false
+        },
+        {
+          "direction": "leste",
+          "targetLocationId": 102,
+          "description": "Um caminho que leva a uma caverna misteriosa.",
+          "inactive": true
+        },
+        {
+          "direction": "norte",
+          "targetLocationId": 104,
+          "description": "Uma trilha sinuosa que leva ao Vale dos Ventos.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 202,
+          "name": "Pocao",
+          "description": "Restaura parte da sua vida.",
+          "can_take": true,
+          "inactive": false
+        },
+        {
+          "id": 203,
+          "name": "Armadilha",
+          "description": "Arames finos e resistentes, úteis para desarmar armadilhas ou prender inimigos.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [
+        {
+          "id": 400,
+          "description": "Você encontra uma porta de pedra bloqueando o caminho para a caverna. O mapa indica que há uma maneira de abri-la.",
+          "solution": {
+            "requiredItems": [201],
+            "actions": "Usar o mapa."
+          },
+          "result": {
+            "active": [102],
+            "lose_item": [],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "id": 500,
+          "name": "Ninja Renegado",
+          "attack": 14,
+          "defense": 8,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "name": "Caverna Secreta",
+      "description": "Uma caverna escura e úmida, onde o pergaminho secreto está escondido. Há sinais de que alguém esteve aqui recentemente.",
+      "exits": [
+        {
+          "direction": "oeste",
+          "targetLocationId": 101,
+          "description": "Volta para a Floresta Proibida.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 204,
+          "name": "Pergaminho",
+          "description": "O pergaminho que contém técnicas ninjas avançadas.",
+          "can_take": true,
+          "inactive": true
+        }
+      ],
+      "npcs": [],
+      "puzzles": [
+        {
+          "id": 401,
+          "description": "O pergaminho está protegido por um selo mágico. Você precisa de itens específicos para quebrar o selo.",
+          "solution": {
+            "requiredItems": [200, 202],
+            "actions": "Usar a kunai"
+          },
+          "result": {
+            "active": [204],
+            "lose_item": [200, 202],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "id": 501,
+          "name": "Guardião da Caverna",
+          "attack": 16,
+          "defense": 10,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 16
+          }
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "name": "Dojo de Treinamento",
+      "description": "Um local para shinobis aprimorarem suas habilidades. Aqui, você pode treinar e aprender novas técnicas.",
+      "exits": [
+        {
+          "direction": "oeste",
+          "targetLocationId": 100,
+          "description": "Volta para a Vila da Folha.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 205,
+          "name": "Shuriken",
+          "description": "Estrelas ninja afiadas, ótimas para combates à distância.",
+          "can_take": true,
+          "inactive": true
+        },
+        {
+          "id": 206,
+          "name": "Manual",
+          "description": "Um manual de jutsus que ensina técnicas de combate avançadas. Pode ser usado para aprender novos movimentos.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [
+        {
+          "id": 301,
+          "name": "Mestre",
+          "description": "Um shinobi experiente que pode ensinar novas técnicas.",
+          "inactive": false,
+          "dialogues": [
+            {
+              "text": "Bem-vindo ao dojo. Treine duro e você ficará mais forte. Aqui está uma shuriken como recompensa por vir treinar.",
+              "responses": [
+                {
+                  "result": {
+                    "active": [205],
+                    "lose_item": []
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "puzzles": [],
+      "enemies": []
+    },
+    {
+      "id": 104,
+      "name": "Vale dos Ventos",
+      "description": "Um vale aberto com ventos fortes, onde ninjas renegados se escondem. Há rumores de que um item importante está escondido aqui.",
+      "exits": [
+        {
+          "direction": "sul",
+          "targetLocationId": 101,
+          "description": "Volta para a Floresta Proibida.",
+          "inactive": false
+        },
+        {
+          "id": 1009,
+          "direction": "norte",
+          "targetLocationId": 105,
+          "description": "Um caminho íngreme que leva ao Templo das Sombras.",
+          "inactive": true
+        }
+      ],
+      "items": [
+        {
+          "id": 207,
+          "name": "Chave do Templo",
+          "description": "Uma chave antiga que abre a porta do Templo das Sombras.",
+          "can_take": true,
+          "inactive": true
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "id": 502,
+          "name": "Líder dos Renegados",
+          "attack": 20,
+          "defense": 12,
+          "result": {
+            "active": [207],
+            "lose_item": [],
+            "lose_life": 20
+          }
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "name": "Templo das Sombras",
+      "description": "Um templo misterioso onde o vilão, Orochimaru, reside. Este é o confronto final para salvar a Vila da Folha.",
+      "exits": [
+        {
+          "id": 1010,
+          "direction": "sul",
+          "targetLocationId": 104,
+          "description": "Volta para o Vale dos Ventos.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 208,
+          "name": "Espada de Kusanagi",
+          "description": "A lendária espada de Orochimaru, agora sua como troféu.",
+          "can_take": true,
+          "inactive": true
+        }
+      ],
+      "npcs": [],
+      "puzzles": [
+        {
+          "id": 402,
+          "description": "A porta do templo está trancada. Você precisa de uma chave para abri-la.",
+          "solution": {
+            "requiredItems": [207],
+            "actions": "Usar a chave do templo para destrancar a porta."
+          },
+          "result": {
+            "active": [105],
+            "lose_item": [207],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "id": 503,
+          "name": "Orochimaru",
+          "attack": 28,
+          "defense": 18,
+          "result": {
+            "active": [208],
+            "lose_item": [],
+            "lose_life": 28
+          }
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "name": "Rio das Sombras",
+      "description": "Um rio escuro e traiçoeiro, com correntes rápidas. Há sinais de que algo valioso pode estar escondido nas margens.",
+      "exits": [
+        {
+          "id": 1011,
+          "direction": "leste",
+          "targetLocationId": 100,
+          "description": "Volta para a Vila da Folha.",
+          "inactive": false
+        },
+        {
+          "id": 1012,
+          "direction": "norte",
+          "targetLocationId": 107,
+          "description": "Uma trilha que leva ao Acampamento Inimigo.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 209,
+          "name": "Cristal de Chakra",
+          "description": "Um cristal raro que amplifica suas habilidades de chakra. Pode ser usado em combates ou para resolver puzzles.",
+          "can_take": true,
+          "inactive": false
+        }
+      ],
+      "npcs": [],
+      "puzzles": [],
+      "enemies": [
+        {
+          "id": 504,
+          "name": "Guardião do Rio",
+          "attack": 15,
+          "defense": 9,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 15
+          }
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "name": "Acampamento Inimigo",
+      "description": "Um acampamento secreto onde ninjas inimigos planejam atacar a Vila da Folha. Você precisa impedir seus planos.",
+      "exits": [
+        {
+          "id": 1013,
+          "direction": "sul",
+          "targetLocationId": 106,
+          "description": "Volta para o Rio das Sombras.",
+          "inactive": false
+        }
+      ],
+      "items": [
+        {
+          "id": 210,
+          "name": "Plano",
+          "description": "Um documento que detalha os planos dos inimigos para atacar a Vila da Folha. Leve-o ao Sensei para completar a missão secundária.",
+          "can_take": true,
+          "inactive": true
+        }
+      ],
+      "npcs": [],
+      "puzzles": [
+        {
+          "id": 403,
+          "description": "Os planos estão guardados em um cofre protegido por um mecanismo de arames. Você precisa desarmá-lo para pegar os planos.",
+          "solution": {
+            "requiredItems": [203],
+            "actions": "Usar a armadilha de arames para desarmar o mecanismo."
+          },
+          "result": {
+            "active": [210],
+            "lose_item": [203],
+            "lose_life": 0
+          }
+        }
+      ],
+      "enemies": [
+        {
+          "id": 505,
+          "name": "Comandante Inimigo",
+          "attack": 22,
+          "defense": 14,
+          "result": {
+            "active": [],
+            "lose_item": [],
+            "lose_life": 22
+          }
+        }
+      ]
+    }
+  ]
+}
